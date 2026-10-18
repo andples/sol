@@ -29,7 +29,7 @@
         "react-native-get-random-values": "2.0.0",
         "react-native-macos": "0.81.7",
         "react-native-reanimated": "^3.19.5",
-        "react-native-restart-newarch": "^1.0.85",
+        "react-native-restart-newarch": "^1.0.92",
         "react-native-safe-area-context": "5.5.2",
         "react-native-url-polyfill": "3.0.0",
         "uuid": "13.0.0",
@@ -66,7 +66,7 @@
     "@sentry/cli",
   ],
   "patchedDependencies": {
-    "react-native-restart-newarch@1.0.85": "patches/react-native-restart-newarch@1.0.85.patch",
+    "react-native-restart-newarch@1.0.92": "patches/react-native-restart-newarch@1.0.92.patch",
     "react-native-macos@0.81.7": "patches/react-native-macos@0.81.7.patch",
   },
   "packages": {
@@ -1456,7 +1456,7 @@
 
     "react-native-reanimated": ["react-native-reanimated@3.19.5", "", { "dependencies": { "@babel/plugin-transform-arrow-functions": "^7.0.0-0", "@babel/plugin-transform-class-properties": "^7.0.0-0", "@babel/plugin-transform-classes": "^7.0.0-0", "@babel/plugin-transform-nullish-coalescing-operator": "^7.0.0-0", "@babel/plugin-transform-optional-chaining": "^7.0.0-0", "@babel/plugin-transform-shorthand-properties": "^7.0.0-0", "@babel/plugin-transform-template-literals": "^7.0.0-0", "@babel/plugin-transform-unicode-regex": "^7.0.0-0", "@babel/preset-typescript": "^7.16.7", "convert-source-map": "^2.0.0", "invariant": "^2.2.4", "react-native-is-edge-to-edge": "1.1.7" }, "peerDependencies": { "@babel/core": "^7.0.0-0", "react": "*", "react-native": "*" } }, "sha512-bd4AwIkBAaY4BjrgpSoKjEaRG/tXD756F5nGuiH5IMBSKN8tRdUEA8hWZCyIo/R6/kha/tVSoCqodVUACh7ZWw=="],
 
-    "react-native-restart-newarch": ["react-native-restart-newarch@1.0.85", "", { "peerDependencies": { "react-native": ">=0.60.0" } }, "sha512-oanl4m0aI9wI91F0Lc1xEK3zM+hs8NK1PBQPnf4XZjrYWsVahdWX6gYdTNhDpR8ekpBHSXkBPr7meGHwfHfNKQ=="],
+    "react-native-restart-newarch": ["react-native-restart-newarch@1.0.92", "", { "peerDependencies": { "react-native": ">=0.60.0" } }, "sha512-VDe6si7l2ceT7RCkMkkOFf8RV21g79fgGwOB2KY7iOTeqmjElPLJsmdsfOmFMZRBNmUvcELr8E4hINQa9uXNdw=="],
 
     "react-native-safe-area-context": ["react-native-safe-area-context@5.5.2", "", { "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-t4YVbHa9uAGf+pHMabGrb0uHrD5ogAusSu842oikJ3YKXcYp6iB4PTGl0EZNkUIR3pCnw/CXKn42OCfhsS0JIw=="],
 

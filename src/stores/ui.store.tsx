@@ -56,6 +56,14 @@ let onFileSearchListener: EmitterSubscription | undefined;
 let onHotkeyListener: EmitterSubscription | undefined;
 let onAppsChangedListener: EmitterSubscription | undefined;
 let appareanceListener: NativeEventSubscription | undefined;
+// Every reload tears the JS runtime down while work may still be in flight, and fast
+// light/dark flips (e.g. a theme switcher) used to reload about once a second, which
+// crashes Sol. Reload once the scheme has stayed put for a while, only if it differs
+// from the one this runtime started with, and at most once per runtime.
+const RESTART_SETTLE_MS = 1500;
+const bootColorScheme = Appearance.getColorScheme();
+let restartTimer: ReturnType<typeof setTimeout> | undefined;
+let restarting = false;
 let bookmarksDisposer: IReactionDisposer | undefined;
 let configDisposer: IReactionDisposer | undefined;
 
@@ -915,6 +923,7 @@ export const createUIStore = (root: IRootStore) => {
 			onHotkeyListener?.remove();
 			onAppsChangedListener?.remove();
 			appareanceListener?.remove();
+			clearTimeout(restartTimer);
 			bookmarksDisposer?.();
 			configDisposer?.();
 		},
@@ -1092,7 +1101,13 @@ export const createUIStore = (root: IRootStore) => {
 				store.isDarkMode = false;
 				// nativeWindColorScheme.set("light")
 			}
-			RNRestart.restart();
+			if (restarting) return;
+			clearTimeout(restartTimer);
+			restartTimer = setTimeout(() => {
+				if (Appearance.getColorScheme() === bootColorScheme) return;
+				restarting = true;
+				RNRestart.restart();
+			}, RESTART_SETTLE_MS);
 		},
 
 		addToHistory: (query: string) => {
